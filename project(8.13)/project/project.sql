@@ -1,6 +1,15 @@
+create SEQUENCE seq_reply;
+create table tbl_reply(
+    rno NUMBER(10,0) primary key,    -- 답글 번호
+    bno number(10,0) not null,       -- 게시판 번호 
+    reply varchar2(1000)not null,    -- 답글 내용
+    user_name varchar2(50) not null,   -- 유저 닉네임
+    replyDate date default sysdate    -- 답글 날짜
+);
+
 create table users (
     user_code number primary key,             -- 사용자 코드	
-    user_name varchar2(20) not null,          -- 사용자 이름
+    user_name varchar2(20) not null UNIQUE,          -- 사용자 이름
     user_photo varchar2(50),                  -- 프로필 사진
     user_area varchar2(50),                   -- 지역 
     manner number not null,                   -- 평점	
@@ -25,39 +34,60 @@ select * from(select rownum rn, tt.* from
 		where rn>=0 and rn<=10;
 select count(*) as count from users;
 
-
-create table goods (
-    user_code number,                       -- 판매자 코드
-    board_seq number primary key,           -- 상품 번호
+--
+--create table goods (
+--    user_code number,                       -- 판매자 코드
+--    board_seq number primary key,           -- 상품 번호
+--    category_code varchar2(20) not null,    -- 물품분류
+--    goods_name varchar2(20) not null,       -- 상품 이름
+--    goods_price number not null,            --상품 가격
+--    seller_content varchar2(200),           -- 판매자 멘트
+--    bargain_tf number not null,             -- 흥정가능 유무
+--    chat_count number not null,             -- 채팅 개수
+--    reply_count number not null,            -- 댓글 갯수
+--    interest_count number not null,         -- 관심 갯수
+--    hits number not null,                   -- 조회수
+--    reg_date date not null,                 -- 작성 날짜
+--    area varchar(100) not null,             -- 판매 지역
+--    users_pass varchar2(20) not null,       -- 글 비밀번호
+--    board_subject varchar2(255) not null,   -- 글 제목
+--    board_content varchar2(4000) not null,  -- 글 내용
+--    board_file varchar2(50) not null,       -- 첨부파일
+--    board_re_ref number not null,           -- 관련글번호
+--    board_re_lev number not null,           -- 답글 레벨
+--    board_re_seq number not null,           -- 관련글 중 출력순서
+--    board_readcount number default 0,       -- 조회수
+--    --constraint  foreign key (user_code) references users (user_code)
+--    --on delete cascade
+--);
+create table goods_board (
+    num number PRIMARY KEY,           -- 글 번호
+    image0 varchar2(50),       -- 상품 사진
+    image1 varchar2(50),       -- 상품 사진
+    image2 varchar2(50),       -- 상품 사진
+    user_name varchar2(50),                       -- 사용자 
+    subject varchar2(255) not null,   -- 글 제목
     category_code varchar2(20) not null,    -- 물품분류
-    goods_name varchar2(20) not null,       -- 상품 이름
-    goods_price number not null,            --상품 가격
-    seller_content varchar2(200),           -- 판매자 멘트
-    bargain_tf number not null,             -- 흥정가능 유무
-    chat_count number not null,             -- 채팅 개수
-    reply_count number not null,            -- 댓글 갯수
-    interest_count number not null,         -- 관심 갯수
-    hits number not null,                   -- 조회수
-    reg_date date not null,                 -- 작성 날짜
     area varchar(100) not null,             -- 판매 지역
-    users_pass varchar2(20) not null,       -- 글 비밀번호
-    board_subject varchar2(255) not null,   -- 글 제목
-    board_content varchar2(4000) not null,  -- 글 내용
-    board_file varchar2(50) not null,       -- 첨부파일
-    board_re_ref number not null,           -- 관련글번호
-    board_re_lev number not null,           -- 답글 레벨
-    board_re_seq number not null,           -- 관련글 중 출력순서
-    board_readcount number default 0,       -- 조회수
-    --constraint  foreign key (user_code) references users (user_code)
-    --on delete cascade
+    price number not null,            --상품 가격
+    content varchar2(4000) not null,  -- 글 내용
+    reply_count number default 0,           -- 댓글 갯수
+    interest_count number default 0,        -- 관심 갯수
+    readcount number default 0,       -- 조회수
+    lat number(38,34),                             -- 위도            
+    lng number(38,34),                             -- 경도
+    board_date date                         -- 작성일
 );
-
-insert into product values (1, 1, '디지털/전자', '선풍기', 1000, '아주 좋아요', 0, 0, 0, 0, 0, sysdate, '서울시 서초구');
-
+insert into goods_board values (goods_seq_num.nextval, 'image0','image1','image2','user_name', 'subject','category_code', 'area', 100, 'content', 0,
+		0, 0,0.0,0.0,sysdate);
+        UPDATE goods_board set image0 ='image0', image1 ='image1',image2 ='image2',user_name='user_name',
+		subject='subject',category_code='category_code',area='area'
+		,price=10,content='content', lng=30.74,lat=50.72 where num = 2;
 drop table users purge;
-drop table product purge;
-
+drop table goods_board purge;
+commit;
 select * from users;
+select * from goods_board;
 select *
 from product p ,users u
 where u.user_code=p.user_code;

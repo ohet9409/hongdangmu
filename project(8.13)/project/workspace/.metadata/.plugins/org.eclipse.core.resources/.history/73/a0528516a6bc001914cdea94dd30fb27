@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.usersMapper">
+	<insert id="write" parameterType="usersDTO">
+		insert into users values
+		(#{user_code}, #{user_name}, #{user_photo}, #{user_area} , #{manner},
+		#{reply_percent}, #{sales_count}, #{purchase_count},
+		#{interest_count}, sysdate)
+	</insert>
+	<select id="login" parameterType="java.util.Map"
+		resultType="String">
+		select * from users where user_code = #{user_code} and
+		user_name = #{user_name}
+	</select>
+	<select id="isExistId" parameterType="int"
+		resultType="String">
+		select user_code from users where user_code = #{user_code}
+	</select>
+	<delete id="delete" parameterType="int">
+		delete users where user_code =
+		#{user_code}
+	</delete>
+	<update id="modify" parameterType="usersDTO">
+		UPDATE users
+		set user_name = #{user_name}, user_photo =#{user_photo},
+		user_area=#{user_area},manner=#{pwd}, reply_percent=#{reply_percent},sales_count=#{sales_count},
+		purchase_count=#{purchase_count}, interest_count=#{interest_count} where user_code = #{user_code}
+	</update>
+	<select id="selectOne" resultType="usersDTO"
+		parameterType="String">
+		select * from users where user_code = #{user_code}
+	</select>
+	<select id="selectList" resultType="usersDTO"
+		parameterType="java.util.Map">
+		<![CDATA[
+		select * from(select rownum rn, tt.* from 
+		(select * from users order by name asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	<select id="getTotalMember" resultType="int">
+		select count(*) as count
+		from users
+	</select>
+</mapper>

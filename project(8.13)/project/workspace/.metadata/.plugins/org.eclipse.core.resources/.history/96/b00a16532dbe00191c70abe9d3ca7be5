@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.goods_boardMapper">
+	<insert id="boardWrite" parameterType="goods_boardDTO">
+		insert into goods_board values (goods_seq_num.nextval, #{image0},#{image1},#{image2},#{user_code}, #{subject},#{category_code}, #{area}, #{price}, #{content}, #{reply_count},
+		#{interest_count}, #{readcount},#{lat},#{lng},sysdate)
+	</insert>
+	<delete id="boardDelete" parameterType="int">
+		delete goods_board where num=#{num}
+	</delete>
+	<update id="updateRC" parameterType="int">
+		update goods_board set readcount=readcount+1 where num=#{num}
+	</update>
+	<update id="updateIC" parameterType="int">
+		update goods_board set interest_count=interest_count+1 where num=#{num}
+	</update>
+	<update id="boardModify" parameterType="goods_boardDTO">
+		UPDATE goods_board set  image0 =#{image0}, image1 =#{image1},image2 =#{image2},user_code=#{user_code},
+		subject=#{subject},category_code=#{category_code},area=#{area}
+		,price=#{price},content=#{content}, lng=#{lng},lat=#{lat} where num = #{num}
+	</update>
+	<select id="boardView" resultType="goods_boardDTO" parameterType="int">
+		select * from GOODS_BOARD where num =#{num}
+	</select>
+	<select id="boardList" resultType="goods_boardDTO" parameterType="java.util.Map">
+		<![CDATA[
+		select * from(select rownum rn, tt.* from 
+		(select * from GOODS_BOARD order by num asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	<select id="list" resultType="goods_boardDTO" parameterType="java.util.Map">
+		select * from GOODS_BOARD
+	</select>
+	<select id="getTotalA" resultType="int">
+		select count(*) as count from GOODS_BOARD
+	</select>
+</mapper>

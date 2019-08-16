@@ -1,0 +1,9 @@
+package reply.bean;
+
+public class replyDTO {
+	private int reply_seq;                      //-- 글번호
+	private int user_code;                      //-- 사용자 코드
+	private String user_name;			       //-- 작성자
+	private String user_area;      //-- 지역
+	private String reply_content;  //-- 댓글 내용
+	private String reply_date;

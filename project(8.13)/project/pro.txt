@@ -1,0 +1,63 @@
+create table goods_board (
+    num number PRIMARY KEY,           -- 글 번호
+    image0 varchar2(50) not null,       -- 상품 사진
+    image1 varchar2(50),       -- 상품 사진
+    image2 varchar2(50),       -- 상품 사진
+    user_code number,                       -- 사용자 코드
+    subject varchar2(255) not null,   -- 글 제목
+    category_code varchar2(20) not null,    -- 물품분류
+    area varchar(100) not null,             -- 판매 지역
+    price number not null,            --상품 가격
+    content varchar2(4000) not null,  -- 글 내용
+    reply_count number default 0,           -- 댓글 갯수
+    interest_count number default 0,        -- 관심 갯수
+    readcount number default 0,       -- 조회수
+    lat number,                             -- 위도            
+    lng number,                             -- 경도
+    board_re_ref number not null,           -- 관련글번호
+    board_re_lev number not null,           -- 답글 레벨
+    board_re_seq number not null,           -- 관련글 중 출력순서
+    board_date date                         -- 작성일
+);
+---------------------------------------------------------------------------------------------
+create table users (
+    user_code number primary key,             -- 사용자 코드	
+    user_name varchar2(20) not null,          -- 사용자 닉네임
+    user_photo varchar2(50) null,                  -- 프로필 사진
+    user_area varchar2(50)null,                   -- 지역
+    user_tel VARCHAR2(20) null,                    -- 사용자 전화번호
+    user_email1 VARCHAR2(20) null,                   -- 사용자 이메일1
+    user_email2 VARCHAR2(20)null,                   -- 사용자 이메일2
+    manner number default 0,                   -- 평점	
+    reply_percent number default 0,            -- 응답률
+    sales_count number default 0,              -- 판매 개수
+    purchase_count number default 0,           -- 구매 개수
+    interest_count number default 0,           -- 관심목록 개수
+    lat number(38,34),                             -- 위도            
+    lng number(38,34),                             -- 경도
+    join_date date not null                   -- 가입 날짜
+);
+-- 시퀀스 객체 생성
+create sequence users_seq_num nocycle nocache;
+drop SEQUENCE users_seq_num;
+drop table users;
+insert into users values (1, '홍길동', 'asd.jpg', '서울시 서초구' , 5, 90, 5, 2, 3, sysdate);
+insert into users values (users_seq_num.nextval, '홍길동', 'asd.jpg', '서울시 서초구','010-11115555','aaaa','naver.com', 5, 90, 5, 2, 3,99.0,99.5, sysdate);
+insert into users values (users_seq_num.nextval, '홍길동', 'asd.jpg', '서울시 서초구','010-11115555','aaaa','naver.com', 5, 90, 5, 2, 3, sysdate);
+select * from users where user_code = 1 and user_name = '홍길동';
+select user_code from users where user_code = 1;
+select * from users where user_code = 1;
+select count(*) as count
+		from users;
+select * from users ;
+delete users where user_code = 1;
+UPDATE users set user_name = '고길동', user_photo ='aa.jpg', 
+user_area='경기도',manner=5, reply_percent=90,sales_count=1,
+purchase_count=1, interest_count=5,user_tel='010-1234-1111'
+,user_email1='a',user_email2='naver.com',lng=10.5,lat=11.5 where user_code = 1;
+
+select * from(select rownum rn, tt.* from 
+		(select * from users order by user_code asc) tt) 
+		where rn>=0 and rn<=10;
+select count(*) as count from users;
+commit;

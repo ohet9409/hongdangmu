@@ -1,0 +1,58 @@
+package goods_board.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import goods_board.bean.Goods_boardDTO;
+import goods_board.dao.Goods_boardDAO;
+@Service
+public class Goods_boardServiceImpl implements Goods_boardService{
+
+	private Goods_boardDAO dao;
+	public int boardWrite(Goods_boardDTO boardDTO) {
+		// TODO Auto-generated method stub
+		return dao.;
+	}
+
+	public int boardDelete(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int updateRC(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int updateIC(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int boardModify(Goods_boardDTO boardDTO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Goods_boardDTO boardView(int num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Goods_boardDTO> boardList(int startNum, int endNum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getTotalA() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public List<Goods_boardDTO> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

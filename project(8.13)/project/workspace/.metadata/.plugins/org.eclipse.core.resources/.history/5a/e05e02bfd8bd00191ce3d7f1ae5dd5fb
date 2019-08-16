@@ -1,0 +1,5 @@
+package goods_board.dao;
+
+public class Goods_boardDAO {
+
+}

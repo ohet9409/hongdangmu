@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.scoreMapper">
+	<insert id="scoreInput" parameterType="scoreDto">
+		INSERT INTO score VALUES (#{studNo},#{name},#{kor},#{eng},#{mat},#{tot},#{avg},SYSDATE)
+	</insert>
+	<delete id="scoreDel" parameterType="String">
+		DELETE score where studNo = #{studNo}
+	</delete>
+	<update id="scoreUpdate" parameterType="scoreDto">
+		UPDATE score SET kor=#{kor}, eng=#{eng},mat=#{mat},tot=#{tot},avg=#{avg} where studNo =#{studNo}
+	</update>
+	<select id="scoreView" resultType="scoreDto" parameterType="String">
+		SELECT * FROM score WHERE studNo =#{studNo}
+	</select>
+	<select id="scoreList" resultType="scoreDto" parameterType="java.util.Map">
+		<![CDATA[
+		select studNo, name, kor, eng, mat, tot, avg,logtime 
+		from (select rownum rn,tt.* from
+		(select * from score order by studNo asc)tt) where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	<select id="scoreCount" resultType="int">
+		select count(*) as count from score
+	</select>
+</mapper>

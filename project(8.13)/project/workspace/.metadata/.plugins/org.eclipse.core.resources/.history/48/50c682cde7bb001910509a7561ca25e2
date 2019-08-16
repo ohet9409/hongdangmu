@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	width: 480px;
+	height: 300px;
+	padding-top: 20px;
+	background-size: 100% 100%;
+}
+
+ul {
+	padding: 10px 20px;
+	background-color: rgba(255, 255, 255,0.6);
+}
+</style>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript"></script>
+</head>
+<body>
+	<div>
+		<ul id="menu">
+			<li class="item"><a href="#">img/1.jpg</a></li>
+			<li class="item"><a href="#">img/2.jpg</a></li>
+			<li class="item"><a href="#">img/3.jpg</a></li>
+		</ul>
+	</div>
+</body>
+</html>

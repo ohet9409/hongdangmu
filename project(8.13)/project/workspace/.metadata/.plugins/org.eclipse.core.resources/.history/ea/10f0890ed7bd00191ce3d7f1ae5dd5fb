@@ -1,0 +1,5 @@
+package goods_board.controller;
+
+public interface Goods_boardService {
+
+}

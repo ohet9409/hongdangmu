@@ -1,0 +1,5 @@
+package goods_board.bean;
+
+public class Goods_boardDTO {
+
+}

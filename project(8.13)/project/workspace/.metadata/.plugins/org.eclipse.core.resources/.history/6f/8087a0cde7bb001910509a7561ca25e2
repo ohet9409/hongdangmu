@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<body>
+	<h1 class="title">$.ajax() 함수를 사용한 XML데이터 읽기(2)</h1>
+	<div class="exec">
+		<input type="button" value="XML데이터 가져오기" id="mybtn">
+	</div>
+	<div class="console" id="result"></div>
+</body>
+</body>
+</html>

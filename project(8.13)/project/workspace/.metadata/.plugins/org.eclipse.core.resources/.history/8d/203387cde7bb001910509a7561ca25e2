@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* {
+	padding: 0;
+	margin: 0;
+	color: #333;
+}
+
+ul {
+	list-style: none;
+}
+
+#container {
+	padding: 30px 20px;
+}
+
+h1 {
+	font-size: large;
+	border-left: 10px solid #7baeb5;
+	border-bottom: 1px solid #7baeb5;
+	padding: 10px;
+	width: auto;
+}
+
+#comment_write {
+	padding: 20px 15px;
+	border-bottom: 1px solid #7baeb5;
+}
+
+#comment_write label {
+	display: inline-block;
+	width: 80px;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#comment_write input[type='text'], textarea#comment {
+	border: 1px solid #ccc;
+	vertical-align: middle;
+	padding: 3px 10px;
+	font-size: 12px;
+	line-height: 150%;
+}
+
+textarea#comment {
+	width: 380px;
+	height: 90px;
+}
+
+.comment_item {
+	font-size: 13px;
+	color: #333;
+	padding: 15px;
+	border-bottom: 1px dotted #ccc;
+	line-height: 150%;
+}
+.comment_item .writer{
+	color: #555;
+	line-height: 200%;
+}
+
+.comment_item .writer input{
+	vertical-align: middle;
+}
+.comment_item .writer .name{
+	color: #222;
+	font-size: 14px;
+	font-weight: bold;
+}
+</style>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 저장하기 버튼 클릭 : submit 이벤트
+		$("#comment_form").submit(function() {
+			// 입력검사
+			if(!$("#user_name").val()){
+				alert("이름을 입력하세요");
+				$("#user_name").focus();
+				return false;
+			}
+			if(!$("#comment").val()){
+				alert("내용을 입력하세요");
+				$("#comment").focus();
+				return false;
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="container">
+		<h1>jQuery Comment</h1>
+		<div id="comment_write">
+			<form action="" id="comment_form">
+				<div>
+					<label for="user_name">작성자</label> <input type="text"
+						name="user_name" id="user_name"> <input type="submit"
+						value="저장하기">
+				</div>
+				<div>
+					<label for="comment">덧글 내용</label>
+					<textarea rows="" cols="" name="comment" id="comment"></textarea>
+				</div>
+			</form>
+		</div>
+		<!-- 덧글 목록 -->
+		<ul id="comment_list">
+			<!-- 여기에 동적 생성 요소가 들어가게 됩니다. -->
+		</ul>
+	</div>
+</body>
+</html>

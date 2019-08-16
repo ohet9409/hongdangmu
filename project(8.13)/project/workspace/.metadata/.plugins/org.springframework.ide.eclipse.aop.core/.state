@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="step20_test1"/>
+<aop-project name="hongdangmu"/>
+<aop-project name="step19"/>
+<aop-project name="SpringBoard_1"/>
+<aop-project name="SpringBoard"/>
+</aop-reference-model>

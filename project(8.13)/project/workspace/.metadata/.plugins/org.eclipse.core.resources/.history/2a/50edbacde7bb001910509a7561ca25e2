@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* 배경지정 */
+body {
+	background: #252422;
+}
+/* 목록 스타일 초기화 및 중앙배치, 가로폭 지정 */
+ul {
+	padding: 0;
+}
+</style>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<ul>
+		<li class="collapsible">
+			<h2 class="title"><a href="txt/html5.txt">HTML5</a> </h2>
+			<p class="content"></p>
+		</li>
+		<li class="collapsible">
+			<h2 class="title"><a href="txt/jquery.txt">jQuery</a> </h2>
+			<p class="content"></p>
+		</li>
+		<li class="collapsible">
+			<h2 class="title"><a href="txt/bootstrap.txt">Bootstrap3</a> </h2>
+			<p class="content"></p>
+		</li>
+	</ul>
+</body>
+</html>

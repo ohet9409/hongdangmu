@@ -18,6 +18,7 @@
 	
 	<mvc:resources location="/script/" mapping="/script/**"/>
 	<mvc:resources location="/img/" mapping="/img/**"/>
+	<mvc:resources location="/js/" mapping="/js/**"/>
 	<!-- storage 폴더 등록 -->
 	<mvc:resources location="/storage/" mapping="/storage/**"/>
 	<!-- 어노테이션 설정 -->

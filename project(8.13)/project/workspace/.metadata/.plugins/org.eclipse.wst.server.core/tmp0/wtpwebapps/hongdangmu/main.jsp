@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="canonical" href="https://www.daangn.com/" />
 <title>홍당무마켓 - 우리 동네 중고거래</title>
-<link rel="author" href="당근마켓" />
+<link rel="author" href="홍당무마켓" />
 <link href="/images/icons/shortcut_icon.png" rel="shortcut icon"
 	type="image/x-icon">
 <link rel="shortcut icon" type="image/x-icon"
@@ -19,6 +19,31 @@
 	href="/images/icons/daangn_logo_192.png">
 
 <title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+		//alert("test");
+		$.ajax({
+			//url:"goods/boardList.do",
+			url:"http://localhost:8098/hongdangmu/goods/boardList.do",
+			//url:"http://192.168.0.2:8099/hongdangmu/goods/boardList.do",
+			//contentType: 'application/json; charset=utf-8',
+			type: "post",
+			data : {"pg" : "1"},
+			dataType: 'json',
+			success: function(json) {
+				alert(json.item);
+				// 파라미터로 전달되는 data 객체는 JSON 자체이다.
+				//var area = json.rt;
+				
+				
+			},
+			error: function(xhr) {
+				alert("test3 " + xhr.status);
+			}
+		});
+});
+</script>
 </head>
 <body>
 <header id="fixed-bar">

@@ -17,7 +17,7 @@
 --><!-- Note:  A "Server" is not itself a "Container", so you may not
      define subcomponents such as "Valves" at this level.
      Documentation at /docs/config/server.html
- --><Server port="8006" shutdown="SHUTDOWN">
+ --><Server port="8005" shutdown="SHUTDOWN">
   <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8099" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8098" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -105,7 +105,7 @@
     -->
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
-    <Connector port="8008" protocol="AJP/1.3" redirectPort="8443"/>
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"/>
 
 
     <!-- An Engine represents the entry point (within Catalina) that processes
@@ -149,9 +149,9 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Users\dhdms\Desktop\project(8.13)\project\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\dhdms\Desktop\project(8.13)\project\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\hongdangmu" path="/hongdangmu" reloadable="true" source="org.eclipse.jst.jee.server:hongdangmu">
+      <Context docBase="D:\hondangmu\project(8.13)\project\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\hondangmu\project(8.13)\project\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\hongdangmu" path="/hongdangmu" reloadable="true" source="org.eclipse.jst.jee.server:hongdangmu">
 	<Resource driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="3" name="jdbc/oracle" password="m1234" removeAbandoned="true" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="jspexam"/>
-</Context><Context docBase="C:\Users\dhdms\Desktop\project(8.13)\project\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SpringBoard" path="/SpringBoard2" reloadable="true" source="org.eclipse.jst.jee.server:SpringBoard"/><Context docBase="C:\Users\dhdms\Desktop\project(8.13)\project\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step20_test1" path="/step20_test1" reloadable="true" source="org.eclipse.jst.jee.server:step20_test1"/><Context docBase="C:\Users\dhdms\Desktop\project(8.13)\project\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step19" path="/step19" reloadable="true" source="org.eclipse.jst.jee.server:step19"/></Host>
+</Context></Host>
     </Engine>
   </Service>
 </Server>
